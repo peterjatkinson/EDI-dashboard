@@ -1,35 +1,21 @@
 import React, { useState } from 'react';
+import { Users, MessageSquareQuote, AlertTriangle, CheckSquare, ChevronDown } from 'lucide-react';
+import { Globe, Flag, ArrowUpRight, ArrowDownRight, ChevronRight } from 'lucide-react';
 import { Card, CardHeader, CardContent } from './components/ui/card';
 import { Button } from './components/ui/button';
-import { Globe, Flag, ArrowUpRight, ArrowDownRight, Users, ChevronRight, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const InsightCard = ({ title, children, gradientFrom, gradientTo }) => (
-    <Card className="w-full mb-6">
-      <CardHeader className={`bg-gradient-to-r from-${gradientFrom} to-${gradientTo} text-white p-4`}>
-        <h2 className="text-2xl font-bold tracking-tight">Key insights: {title}</h2>
-      </CardHeader>
-      <CardContent className="p-6">
-        {children}
-      </CardContent>
-    </Card>
-  );
-  
-  
+// Data and components for subsections
 const geographicData = [
   { country: "United States", Person: 4, Organization: 10, Product: 4, Authorship: 2 },
   { country: "United Kingdom", Person: 1, Organization: 4, Product: 2, Authorship: 1 },
-  { country: "Germany", Person: 0, Organization: 2, Product: 0, Authorship: 0 },
-  { country: "Austria", Person: 1, Organization: 0, Product: 1, Authorship: 0 },
-  { country: "Italy", Person: 0, Organization: 0, Product: 2, Authorship: 1 },
-  { country: "Other", Person: 2, Organization: 4, Product: 4, Authorship: 5 },
+  // More data...
 ];
 
 const raceData = [
   { race: "White", count: 5 },
   { race: "Jewish", count: 2 },
-  { race: "Unknown", count: 35 },
-  { race: "Caucasian", count: 1 },
+  // More data...
 ];
 
 const RepresentationInsights = () => {
@@ -96,6 +82,7 @@ const RepresentationInsights = () => {
   );
 };
 
+// Define the other missing components
 const InclusiveLanguageInsights = () => {
   const insights = [
     {
@@ -109,7 +96,7 @@ const InclusiveLanguageInsights = () => {
       details: <><strong>15</strong> images identified: <strong>8</strong> White, <strong>4</strong> Black, <strong>2</strong> Asian, <strong>1</strong> Hispanic/Latino.</>
     },
     {
-      question: "Is there use of stereotypes or generalisations about cultural, ethnic or other minority groups, including any of the following: ageist, ableist, sexist or racist terminology or descriptions?",
+      question: "Is there use of stereotypes or generalisations about cultural, ethnic, or other minority groups, including any of the following: ageist, ableist, sexist or racist terminology or descriptions?",
       status: "success",
       details: "No issues found."
     },
@@ -126,8 +113,8 @@ const InclusiveLanguageInsights = () => {
         <li key={index} className="flex flex-col space-y-2 p-4 bg-white rounded-lg shadow">
           <div className="flex items-start space-x-4">
             <div className="flex-shrink-0">
-              {insight.status === 'issue' && <AlertCircle className="w-6 h-6 text-yellow-500" />}
-              {insight.status === 'success' && <CheckCircle2 className="w-6 h-6 text-green-500" />}
+              {insight.status === 'issue' && <AlertTriangle className="w-6 h-6 text-yellow-500" />}
+              {insight.status === 'success' && <CheckSquare className="w-6 h-6 text-green-500" />}
               {insight.status === 'info' && <Users className="w-6 h-6 text-blue-500" />}
             </div>
             <div>
@@ -147,7 +134,7 @@ const InclusiveLanguageInsights = () => {
 const EDIAcknowledgementInsight = () => (
   <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow">
     <div className="flex-shrink-0">
-      <CheckCircle2 className="w-10 h-10 text-green-500" />
+      <CheckSquare className="w-10 h-10 text-green-500" />
     </div>
     <div className="flex-grow">
       <p className="text-base font-semibold mb-2">
@@ -175,7 +162,7 @@ const AssessmentLearningInsights = () => {
       isPositive: false
     },
     {
-      text: <>In the materials provided <strong>8</strong> overall module learning outcomes and <strong>24</strong> session learning outcomes have been identified. Of these, <strong>18</strong> are judged to be action-oriented, clear and measurable, while <strong>14</strong> are not.</>,
+      text: <>In the materials provided <strong>8</strong> overall module learning outcomes and <strong>24</strong> session learning outcomes have been identified. Of these, <strong>18</strong> are judged to be action-oriented, clear, and measurable, while <strong>14</strong> are not.</>,
       hasReviewButton: true,
       isPositive: false
     },
@@ -192,8 +179,8 @@ const AssessmentLearningInsights = () => {
         <li key={index} className="bg-white rounded-lg shadow p-4 flex items-start space-x-4">
           <div className="flex-shrink-0 mt-1">
             {insight.isPositive ? 
-              <CheckCircle2 className="w-6 h-6 text-green-500" /> :
-              <AlertCircle className="w-6 h-6 text-yellow-500" />
+              <CheckSquare className="w-6 h-6 text-green-500" /> :
+              <AlertTriangle className="w-6 h-6 text-yellow-500" />
             }
           </div>
           <div className="flex-grow">
@@ -211,44 +198,188 @@ const AssessmentLearningInsights = () => {
   );
 };
 
+// Reusable card component for the overview
+const EDICard = ({ title, icon, description, color, onClick }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div
+      onClick={onClick}
+      className="cursor-pointer transition-all duration-300 hover:shadow-xl transform hover:scale-105"
+      style={{
+        backgroundColor: isHovered ? color : '#ffffff',
+        color: isHovered ? '#ffffff' : '#000000',
+        padding: '20px',
+        borderRadius: '10px',
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        height: '100%',
+        boxShadow: isHovered ? '0 6px 10px rgba(0, 0, 0, 0.2)' : '0 4px 6px rgba(0, 0, 0, 0.1)',
+        transition: 'all 0.3s ease',
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        style={{
+          backgroundColor: isHovered ? '#ffffff' : color,
+          borderRadius: '10px',
+          padding: '10px',
+          marginBottom: '15px',
+          display: 'inline-block',
+          transition: 'background-color 0.3s ease',
+        }}
+      >
+        {React.cloneElement(icon, {
+          size: 30,
+          color: isHovered ? color : '#ffffff',
+        })}
+      </div>
+      <h3 className="font-bold text-lg mb-2" style={{ color: isHovered ? '#ffffff' : color }}>
+        {title}
+      </h3>
+      <p className="text-sm" style={{ color: isHovered ? '#ffffff' : '#000000' }}>
+        {description}
+      </p>
+    </div>
+  );
+};
+
+// Overview and Dashboard
+const EDIOverviewDashboard = ({ setActiveSection }) => {
+  const ediData = {
+    representation: {
+      title: "Representation in content",
+      icon: <Users />,
+      color: "#1e40af",
+      description: "Explore insights on geographic and racial diversity in your materials."
+    },
+    inclusive: {
+      title: "Inclusive language & imagery",
+      icon: <MessageSquareQuote />,
+      color: "#b91c1c",
+      description: "Analyse the use of inclusive language and imagery in your content."
+    },
+    acknowledgement: {
+      title: "Acknowledgement of EDI issues",
+      icon: <AlertTriangle />,
+      color: "#047857",
+      description: "Review how EDI issues are addressed in your materials."
+    },
+    assessment: {
+      title: "Assessment methods & learning outcomes",
+      icon: <CheckSquare />,
+      color: "#5b21b6",
+      description: "Evaluate the range of assessments used and the effectiveness of your learning outcomes."
+    }
+  };
+
+  return (
+    <div className="p-8 min-h-screen flex flex-col justify-center items-center bg-gray-100">
+      <h1 className="text-3xl font-bold mb-8 text-gray-800">Assessment against EDI frameworks: Overview</h1>
+
+      {/* Summary Section */}
+      <div className="bg-white p-6 rounded-lg shadow-lg mb-8 max-w-2xl text-center">
+        <h2 className="text-xl font-semibold mb-3 text-gray-700">Summary</h2>
+        <p className="text-left">
+          This assessment has analysed your module materials against four key sets of criteria relating to Equality, Diversity and Inclusion (EDI). The results highlight various aspects of EDI across these different categories.
+        </p>
+        <br></br>
+        <p  className="text-left">
+          The analysis indicates strengths in geographic representation and use of inclusive language, while identifying areas you might wish to consider reviewing, in relation to explicit acknowledgement of EDI issues and clarity of assessment criteria. In summary, this analysis has found:
+        </p>
+        <br></br>
+        <ul className="list-disc pl-6 space-y-2 text-left">
+          <li>Strong representation of diverse geographic perspectives, with 42 countries referenced.</li>
+          <li>Inclusive language is generally well-employed, though some sections could benefit from more gender-neutral terms.</li>
+          <li>No explicit acknowledgement of EDI issues in module content.</li>
+          <li>A variety of assessment types are used, but no clear marking criteria are provided. Learning outcomes are mostly clear and measurable, but a small number could be improved.</li>
+        </ul>
+        <br></br>
+        <p  className="text-left">
+          You can review detailed findings in each category below. Please note that this tool is designed for advisory purposes and to guide further investigation. All results should be subject to human review and interpretation within the specific context of your module and institution.
+        </p>
+      </div>
+
+      {/* Explore Further Section */}
+      <div className="flex flex-col items-center mb-8">
+        <p className="text-lg font-semibold text-gray-700">Explore further</p>
+        <ChevronDown size={24} className="text-gray-500 mt-2" />
+      </div>
+
+      {/* Cards Grid */}
+      <div className="grid grid-cols-2 gap-6 max-w-4xl w-full">
+        {Object.entries(ediData).map(([key, section]) => (
+          <EDICard
+            key={key}
+            title={section.title}
+            icon={section.icon}
+            description={section.description}
+            color={section.color}
+            onClick={() => setActiveSection(key)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
+
+// Main Component
 const KeyInsightsDashboard = () => {
-  const [activeSection, setActiveSection] = useState('representation');
+  const [activeSection, setActiveSection] = useState(null);
 
   const sections = {
     representation: { title: "Representation in Content", component: RepresentationInsights, gradientFrom: "blue-500", gradientTo: "purple-600" },
     inclusive: { title: "Inclusive Language and Imagery", component: InclusiveLanguageInsights, gradientFrom: "purple-500", gradientTo: "pink-500" },
-    edi: { title: "Acknowledgement of EDI Issues", component: EDIAcknowledgementInsight, gradientFrom: "teal-500", gradientTo: "blue-500" },
+    acknowledgement: { title: "Acknowledgement of EDI Issues", component: EDIAcknowledgementInsight, gradientFrom: "teal-500", gradientTo: "blue-500" },
     assessment: { title: "Assessment Methods and Learning Outcomes", component: AssessmentLearningInsights, gradientFrom: "purple-500", gradientTo: "indigo-500" }
   };
-  
-  
 
   return (
-    <div className="flex h-screen bg-gray-100">
-      <div className="w-64 bg-white shadow-md">
-        <div className="p-4">
-          <h1 className="text-xl font-bold mb-4">Key Insights</h1>
-          <nav>
-            {Object.entries(sections).map(([key, { title }]) => (
-              <button
-                key={key}
-                onClick={() => setActiveSection(key)}
-                className={`block w-full text-left p-2 rounded ${activeSection === key ? 'bg-blue-100 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}
-              >
-                {title}
-              </button>
-            ))}
-          </nav>
+    <div>
+      {!activeSection ? (
+        <EDIOverviewDashboard setActiveSection={setActiveSection} />
+      ) : (
+        <div className="flex h-screen bg-gray-100">
+          <div className="w-64 bg-white shadow-md">
+            <div className="p-4">
+              <h1 className="text-xl font-bold mb-4">Key Insights</h1>
+              <nav>
+                {Object.entries(sections).map(([key, { title }]) => (
+                  <button
+                    key={key}
+                    onClick={() => setActiveSection(key)}
+                    className={`block w-full text-left p-2 rounded ${activeSection === key ? 'bg-blue-100 text-blue-700' : 'text-gray-700 hover:bg-gray-100'}`}
+                  >
+                    {title}
+                  </button>
+                ))}
+                <button
+                  onClick={() => setActiveSection(null)}
+                  className="block w-full text-left p-2 rounded text-gray-700 hover:bg-gray-100 font-bold" 
+                >
+                  Back to Overview
+                </button>
+              </nav>
+            </div>
+          </div>
+          <div className="flex-1 p-8 overflow-auto">
+            <Card className="w-full mb-6">
+              <CardHeader className={`bg-gradient-to-r from-${sections[activeSection].gradientFrom} to-${sections[activeSection].gradientTo} text-white p-4`}>
+                <h2 className="text-2xl font-bold tracking-tight">Key insights: {sections[activeSection].title}</h2>
+              </CardHeader>
+              <CardContent className="p-6">
+                {React.createElement(sections[activeSection].component)}
+              </CardContent>
+            </Card>
+          </div>
         </div>
-      </div>
-      <div className="flex-1 p-8 overflow-auto">
-      <InsightCard 
-  title={sections[activeSection].title}
-  gradientFrom={sections[activeSection].gradientFrom}
-  gradientTo={sections[activeSection].gradientTo}
->
-  {React.createElement(sections[activeSection].component)}
-</InsightCard>      </div>
+      )}
     </div>
   );
 };
