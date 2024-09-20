@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Users, MessageSquareQuote, AlertTriangle, CheckSquare, ChevronDown } from 'lucide-react';
-import { HelpCircle, Globe, Flag, ArrowUpRight, ArrowDownRight, ChevronRight } from 'lucide-react';
+import { Globe, Flag, ArrowUpRight, ArrowDownRight, ChevronRight } from 'lucide-react';
 import { Card, CardHeader, CardContent } from './components/ui/card';
 import { Button } from './components/ui/button';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -19,16 +19,23 @@ const raceData = [
 ];
 
 const RepresentationInsights = () => {
+  
   const insights = [
-    { icon: <Globe className="w-6 h-6 text-blue-500" />, text: <>A total of <strong>42</strong> countries are represented in the entirety of the content provided (this includes identifiable references to people/authors, organisations, and products/items).</> },
+    { icon: <Globe className="w-6 h-6 text-blue-500" />, text: <>A total of <strong>42</strong> countries are represented in the entirety of the content provided (this includes identifiable references to people/authors, organisations and products/items).</> },
     { icon: <Flag className="w-6 h-6 text-red-500" />, text: <>The country accounting for the most identified geographic references is United States, with a total of <strong>156</strong> references.</> },
     { icon: <ArrowUpRight className="w-6 h-6 text-green-500" />, text: <>Countries from the Global North account for <strong>78%</strong> of all identified geographic references.</> },
     { icon: <ArrowDownRight className="w-6 h-6 text-yellow-500" />, text: <>Countries from the Global South account for <strong>22%</strong> of all identified geographic references.</> },
     { icon: <Users className="w-6 h-6 text-purple-500" />, text: <>Of the references to people whose race is identifiable, <strong>65%</strong> are White. However, the race of <strong>30%</strong> of people mentioned was not identifiable.</> },
   ];
 
+  
   return (
+    
     <div>
+      <br></br>
+            <p className="mb-4">
+        Representation in content refers to how different groups of people, cultures and geographical regions are included in your module materials. It is important that content reflects a diverse range of perspectives, backgrounds and experiences to reflect the student body. This section assesses the geographic and racial representation in your materials, highlighting the extent to which diverse voices and regions are represented. Inclusive content helps create a more engaging, equitable learning experience for all students. Key findings are shown below, but you can dig further into the analysis of each area.
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
         {insights.map((insight, index) => (
           <div key={index} className="bg-white p-4 rounded-lg shadow flex flex-col items-center justify-center text-center">
@@ -88,7 +95,7 @@ const InclusiveLanguageInsights = () => {
     {
       question: "Has gender neutral language always been used instead of gendered language where appropriate?",
       status: "issue",
-      details: "Some instances of gendered language were found."
+      details: "X instances of gendered language were found."
     },
     {
       question: "Do images depicting people show a diverse range of individuals?",
@@ -96,19 +103,24 @@ const InclusiveLanguageInsights = () => {
       details: <><strong>15</strong> images identified: <strong>8</strong> White, <strong>4</strong> Black, <strong>2</strong> Asian, <strong>1</strong> Hispanic/Latino.</>
     },
     {
-      question: "Is there use of stereotypes or generalisations about cultural, ethnic, or other minority groups, including any of the following: ageist, ableist, sexist or racist terminology or descriptions?",
+      question: "Is there use of stereotypes or generalisations about cultural, ethnic or other minority groups, including any of the following: ageist, ableist, sexist or racist terminology or descriptions?",
       status: "success",
-      details: "No issues found."
+      details: "This tool has not found any issues in the content provided."
     },
     {
       question: "Has any discipline-specific jargon or cultural references used in the content been explained?",
       status: "issue",
-      details: "Some unexplained jargon or cultural references found."
+      details: "X instances of jargon or cultural references were found."
     }
   ];
 
   return (
     <ul className="space-y-4">
+      <br></br>
+      <p className="mb-4">
+  Inclusive language ensures that the words and phrases used in your materials avoid biases, stereotypes and discriminatory language. This section evaluates whether your materials employ inclusive language and diverse imagery, reporting whether different groups are represented. By using inclusive language and imagery, you create a more respectful and welcoming environment for all learners. Key findings are shown below, and you can explore the detailed analysis further.
+</p>
+
       {insights.map((insight, index) => (
         <li key={index} className="flex flex-col space-y-2 p-4 bg-white rounded-lg shadow">
           <div className="flex items-start space-x-4">
@@ -130,24 +142,32 @@ const InclusiveLanguageInsights = () => {
     </ul>
   );
 };
-
 const EDIAcknowledgementInsight = () => (
-  <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow">
-    <div className="flex-shrink-0">
-      <CheckSquare className="w-10 h-10 text-green-500" />
-    </div>
-    <div className="flex-grow">
-      <p className="text-base font-semibold mb-2">
-        Is there any discussion of historical or current EDI challenges within the field/discipline?
-      </p>
-      <p className="text-base mb-2"><strong>3</strong> instances found</p>
-      <Button className="flex items-center space-x-2">
-        <span>Click to review further</span>
-        <ChevronRight className="w-4 h-4" />
-      </Button>
+  <div>
+    <br></br>
+    <p className="mb-4">
+      Acknowledging Equality, Diversity and Inclusion (EDI) issues means recognising and addressing the systemic barriers and biases that may exist within a subject area. This section reviews whether your materials include any explciit mention of EDI issues in the discipline. Discussing these issues helps cultivate an inclusive learning environment where diverse perspectives are valued. Key findings are presented below, with opportunities for deeper exploration available.
+    </p>
+
+    {/* Existing content */}
+    <div className="flex items-start space-x-4 p-4 bg-white rounded-lg shadow">
+      <div className="flex-shrink-0">
+        <CheckSquare className="w-10 h-10 text-green-500" />
+      </div>
+      <div className="flex-grow">
+        <p className="text-base font-semibold mb-2">
+          Is there any discussion of historical or current EDI challenges within the field/discipline?
+        </p>
+        <p className="text-base mb-2"><strong>3</strong> instances found</p>
+        <Button className="flex items-center space-x-2">
+          <span>Click to review further</span>
+          <ChevronRight className="w-4 h-4" />
+        </Button>
+      </div>
     </div>
   </div>
 );
+
 
 const AssessmentLearningInsights = () => {
   const insights = [
@@ -157,12 +177,12 @@ const AssessmentLearningInsights = () => {
       isPositive: true
     },
     {
-      text: "The assessments provided do not provide clear and measurable marking criteria and/or rubrics.",
+      text: "The assessments provided do not appear to provide clear and measurable marking criteria and/or rubrics.",
       hasReviewButton: true,
       isPositive: false
     },
     {
-      text: <>In the materials provided <strong>8</strong> overall module learning outcomes and <strong>24</strong> session learning outcomes have been identified. Of these, <strong>18</strong> are judged to be action-oriented, clear, and measurable, while <strong>14</strong> are not.</>,
+      text: <>In the materials provided <strong>8</strong> overall module learning outcomes and <strong>24</strong> session learning outcomes have been identified. Of these, <strong>18</strong> are judged to be action-oriented, clear and measurable, while <strong>14</strong> are not.</>,
       hasReviewButton: true,
       isPositive: false
     },
@@ -175,6 +195,11 @@ const AssessmentLearningInsights = () => {
 
   return (
     <ul className="space-y-4">
+      <br></br>
+      <p className="mb-4">
+  Assessments and learning outcomes are critical tools to measure student progress and ensure clarity in expectations. It is essential that assessments are aligned with clear, measurable learning outcomes and that marking criteria are transparent and equitable. This section examines the assessment methods used in your module, identifying how well they align with intended outcomes. Effective assessment practices contribute to fairness and academic success for all students. Key findings are shown below, with more detailed analysis available for further exploration.
+</p>
+
       {insights.map((insight, index) => (
         <li key={index} className="bg-white rounded-lg shadow p-4 flex items-start space-x-4">
           <div className="flex-shrink-0 mt-1">
@@ -300,7 +325,7 @@ const EDIOverviewDashboard = ({ setActiveSection }) => {
         </ul>
         <br></br>
         <p  className="text-left">
-          You can review detailed findings in each category below. Please note that this tool is designed for advisory purposes and to guide further investigation. All results should be subject to human review and interpretation within the specific context of your module and institution. <br></br>
+          You can review detailed findings in each category below. Please note that this tool is designed for advisory purposes and to guide further investigation. All results should be subject to human review and interpretation within the specific context of your module. <br></br>
         </p>
         <span className="text-right ml-2 text-sm text-blue-600 cursor-pointer">
       How does this work?
@@ -366,7 +391,7 @@ const KeyInsightsDashboard = () => {
                   onClick={() => setActiveSection(null)}
                   className="block w-full text-left p-2 rounded text-gray-700 hover:bg-gray-100 font-bold" 
                 >
-                  Back to Overview
+                  &lt; Back to Overview
                 </button>
               </nav>
             </div>
