@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Users, MessageSquareQuote, AlertTriangle, CheckSquare, ChevronDown } from 'lucide-react';
-import { Globe, Flag, ArrowUpRight, ArrowDownRight, ChevronRight } from 'lucide-react';
+import { HelpCircle, Globe, Flag, ArrowUpRight, ArrowDownRight, ChevronRight } from 'lucide-react';
 import { Card, CardHeader, CardContent } from './components/ui/card';
 import { Button } from './components/ui/button';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -300,8 +300,11 @@ const EDIOverviewDashboard = ({ setActiveSection }) => {
         </ul>
         <br></br>
         <p  className="text-left">
-          You can review detailed findings in each category below. Please note that this tool is designed for advisory purposes and to guide further investigation. All results should be subject to human review and interpretation within the specific context of your module and institution.
+          You can review detailed findings in each category below. Please note that this tool is designed for advisory purposes and to guide further investigation. All results should be subject to human review and interpretation within the specific context of your module and institution. <br></br>
         </p>
+        <span className="text-right ml-2 text-sm text-blue-600 cursor-pointer">
+      How does this work?
+    </span>
       </div>
 
       {/* Explore Further Section */}
