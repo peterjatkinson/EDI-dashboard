@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/EDI-dashboard/static/css/main.3fca4cc5.css",
-    "main.js": "/EDI-dashboard/static/js/main.5ef2ce0f.js",
+    "main.js": "/EDI-dashboard/static/js/main.5fecdbd6.js",
     "static/js/453.19761c7c.chunk.js": "/EDI-dashboard/static/js/453.19761c7c.chunk.js",
     "index.html": "/EDI-dashboard/index.html",
     "main.3fca4cc5.css.map": "/EDI-dashboard/static/css/main.3fca4cc5.css.map",
-    "main.5ef2ce0f.js.map": "/EDI-dashboard/static/js/main.5ef2ce0f.js.map",
+    "main.5fecdbd6.js.map": "/EDI-dashboard/static/js/main.5fecdbd6.js.map",
     "453.19761c7c.chunk.js.map": "/EDI-dashboard/static/js/453.19761c7c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3fca4cc5.css",
-    "static/js/main.5ef2ce0f.js"
+    "static/js/main.5fecdbd6.js"
   ]
 }
