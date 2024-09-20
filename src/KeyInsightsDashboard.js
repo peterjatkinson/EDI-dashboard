@@ -9,13 +9,16 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } fro
 const geographicData = [
   { country: "United States", Person: 4, Organization: 10, Product: 4, Authorship: 2 },
   { country: "United Kingdom", Person: 1, Organization: 4, Product: 2, Authorship: 1 },
-  // More data...
+  { country: "Germany", Person: 0, Organization: 2, Product: 0, Authorship: 0 },
+  { country: "Italy", Person: 0, Organization: 0, Product: 2, Authorship: 1 },
+  { country: "Other", Person: 2, Organization: 4, Product: 4, Authorship: 5 },
 ];
 
 const raceData = [
   { race: "White", count: 5 },
   { race: "Jewish", count: 2 },
-  // More data...
+  { race: "Unknown", count: 35 },
+  { race: "Caucasian", count: 1 },
 ];
 
 const RepresentationInsights = () => {
